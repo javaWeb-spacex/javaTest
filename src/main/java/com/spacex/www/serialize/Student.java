@@ -1,5 +1,7 @@
 package com.spacex.www.serialize;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Student implements Serializable {
@@ -47,5 +49,12 @@ public class Student implements Serializable {
                 ", password='" + password + '\'' +
                 ", age=" + age +
                 '}';
+    }
+    public Student readObject(ObjectInputStream in){
+        System.out.println("读Student对象");
+        return null;
+    }
+    public void writeObject(ObjectOutputStream out){
+        System.out.println("写Student对象");
     }
 }
