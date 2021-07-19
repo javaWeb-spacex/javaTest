@@ -35,12 +35,16 @@ public class JsonUtils {
         List<HashMap<String,Object>> dataList;
         dataList=new ArrayList<>();
         try{
+            //创建json对象
             JSONObject rootObject=new JSONObject(json);
+            //获取对象
             JSONObject paramzObject =rootObject.getJSONObject("paramz");
+            //获取数组
             JSONArray feedsArray =paramzObject.getJSONArray("feeds");
             for (int i=0;i<feedsArray.length();i++){
                 JSONObject sonObject =feedsArray.getJSONObject(i);
                 JSONObject dataObject=sonObject.getJSONObject("data");
+                //获取字符串
                 String subjectStr =dataObject.getString("subject");
                 String summaryStr=dataObject.getString("summary");
                 String coverStr=dataObject.getString("cover");
