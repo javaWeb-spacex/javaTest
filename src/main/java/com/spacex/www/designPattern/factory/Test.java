@@ -8,6 +8,7 @@ public class Test {
 
         Shape shape2=shapeFactory.getShape("Rectangle");
         shape2.draw();
+
         Shape shape3=shapeFactory.getShape("Square");
         shape3.draw();
     }

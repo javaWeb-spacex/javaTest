@@ -17,6 +17,6 @@ public class Singleton3 {
         return instance;
     }
     public void showMessage(){
-        System.out.println("单例模式-懒汉式，支持多线程。。。。。。。。。");
+        System.out.println("单例模式-双检索，支持多线程。。。。。。。。。");
     }
 }

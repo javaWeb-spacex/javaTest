@@ -1,4 +1,4 @@
-package com.spacex.www.model;
+package com.spacex.www.enum1;
 
 public enum Day {
     MONDAY, TUESDAY, WEDNESDAY,

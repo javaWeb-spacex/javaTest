@@ -1,4 +1,4 @@
-package com.spacex.www.model;
+package com.spacex.www.enum1;
 
 public enum Affirm {
     YES(1,"是"),

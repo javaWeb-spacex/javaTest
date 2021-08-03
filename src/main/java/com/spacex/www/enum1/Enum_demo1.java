@@ -1,7 +1,7 @@
-package com.spacex.www;
+package com.spacex.www.enum1;
 
-import com.spacex.www.model.Affirm;
-import com.spacex.www.model.Day;
+import com.spacex.www.enum1.Affirm;
+import com.spacex.www.enum1.Day;
 
 import java.util.Arrays;
 
