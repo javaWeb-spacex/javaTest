@@ -1,6 +1,6 @@
 package com.spacex.www.designPattern.factory;
 
-public class Test {
+public abstract class Test {
     public static void main(String[] args) {
         ShapeFactory shapeFactory=new ShapeFactory();
         Shape shape1=shapeFactory.getShape("Circle");
