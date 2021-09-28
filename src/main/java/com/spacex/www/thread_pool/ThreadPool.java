@@ -1,8 +1,8 @@
 package com.spacex.www.thread_pool;
 
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadPool {
 
-    private static Logger logger=LoggerFactory.getLogger(ThreadPool.class);
+    private static Logger logger= LoggerFactory.getLogger(ThreadPool.class);
     private static ThreadPoolExecutor pool=null;
 
     static {
