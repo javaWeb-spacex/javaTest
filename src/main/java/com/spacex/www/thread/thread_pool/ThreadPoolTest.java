@@ -1,4 +1,4 @@
-package com.spacex.www.thread_pool;
+package com.spacex.www.thread.thread_pool;
 
 public class ThreadPoolTest {
     public static void main(String[] args) {
