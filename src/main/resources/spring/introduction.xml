@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--通过配置的方式，user对象的创建-->
-    <bean id="User" class="com.spacex.www.spring.introduction.User"></bean>
+    <bean id="User" class="com.spacex.www.spring.ioc.introduction.User"></bean>
 </beans>

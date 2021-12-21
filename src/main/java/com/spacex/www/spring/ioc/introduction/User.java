@@ -1,4 +1,4 @@
-package com.spacex.www.spring.introduction;
+package com.spacex.www.spring.ioc.introduction;
 
 import lombok.Data;
 
@@ -20,5 +20,9 @@ public class User {
 
     public User() {
     }
+    public void print(){
+        System.out.println("User print");
+    }
+
 
 }

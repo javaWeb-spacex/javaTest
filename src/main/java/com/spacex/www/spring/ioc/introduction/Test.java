@@ -1,4 +1,4 @@
-package com.spacex.www.spring.introduction;
+package com.spacex.www.spring.ioc.introduction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +19,7 @@ public class Test {
         user.setName("sbx");
         user.setAge(25);
        logger.info("Name:"+user.getName()+"Age:"+user.getAge());
+       user.print();
 
     }
 }
