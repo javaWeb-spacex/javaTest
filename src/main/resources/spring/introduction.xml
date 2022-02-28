@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--通过配置的方式，user对象的创建-->
-    <bean id="User" class="com.spacex.www.spring.ioc.introduction.User"></bean>
+    <bean id="user" class="com.spacex.www.spring.ioc.introduction.User"></bean>
+
+    <!--set方式注入属性-->
+    <bean id="book" class="com.spacex.www.spring.ioc.xml.Book">
+        <property name="name" value="《西游记》" ></property>
+        <property name="author" value="吴承恩"></property>
+    </bean>
+
+
+    <!--有参构造-->
+    <bean id="orders" class="com.spacex.www.spring.ioc.xml.Orders">
+        <constructor-arg name="name" value="电脑"></constructor-arg>
+        <constructor-arg name="address" value="联合。。。。"></constructor-arg>
+    </bean>
+
+    <!--p名称空间的方式   底层还是使用的是set方式-->
+    <bean id="book1" class="com.spacex.www.spring.ioc.xml.Book" p:name="九阳神功" p:author="无名氏"></bean>
+
+    <!--注入空值null-->
+    <bean id="book2" class="com.spacex.www.spring.ioc.xml.Book">
+        <property name="author" >
+            <null></null>
+        </property>
+    </bean>
+    <!--注入属性值包含特殊的属性-->
+    <bean id="book3" class="com.spacex.www.spring.ioc.xml.Book">
+        <property name="name" value="&lt;123&gt;" ></property>
+        <property name="author" >
+            <value><![CDATA[<234>]]></value>
+        </property>
+    </bean>
+
+
+
+
+
 </beans>

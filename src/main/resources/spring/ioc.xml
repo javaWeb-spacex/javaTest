@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--外部bean-->
+    <bean id="userService" class="com.spacex.www.spring.ioc.xml.UserService">
+        <!--注入userDao对象-->
+        <!--name 属性名称-->
+        <!--ref 创建userDao对象bean标签id值-->
+        <property name="userDao" ref="userDao"></property>
+
+    </bean>
+
+    <bean id="userDao" class="com.spacex.www.spring.ioc.xml.UserDaoImpl"></bean>
+
+    <!--内部bean-->
+    <bean id="emp" class="com.spacex.www.spring.ioc.xml.Emp">
+        <property name="ename" value="lili"></property>
+        <property name="gender" value="19"></property>
+        <property name="dept">
+            <bean id="dept" class="com.spacex.www.spring.ioc.xml.Dept">
+                <property name="dname" value="开发部"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--级联赋值bean-->
+    <bean id="emp2" class="com.spacex.www.spring.ioc.xml.Emp">
+        <property name="ename" value="lili"></property>
+        <property name="gender" value="19"></property>
+        <property name="dept" ref="dept2"></property>
+    </bean>
+
+    <bean id="dept2" class="com.spacex.www.spring.ioc.xml.Dept">
+        <property name="dname" value="开发部"></property>
+    </bean>
+
+    <!--级联赋值bean-->
+    <bean id="emp3" class="com.spacex.www.spring.ioc.xml.Emp">
+        <property name="ename" value="lili"></property>
+        <property name="gender" value="19"></property>
+        <property name="dept" ref="dept3"></property>
+        <property name="dept.dname" value="人事部"></property>
+    </bean>
+    <bean id="dept3" class="com.spacex.www.spring.ioc.xml.Dept"></bean>
+
+    <!--集合类型的属性注入-->
+    <bean id="collectionType" class="com.spacex.www.spring.ioc.xml.CollectionType">
+        <!--数组类型属性注入-->
+        <property name="arrray">
+            <array>
+                <value>淮安</value>
+                <value>南京</value>
+            </array>
+        </property>
+        <!--List类型属性注入-->
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+        <!--Map类型属性注入-->
+        <property name="Map">
+            <map>
+                <entry key="1" value="上海"></entry>
+                <entry key="2" value="北京"></entry>
+            </map>
+        </property>
+        <!--Set类型属性注入-->
+        <property name="set">
+            <set>
+                <value>java</value>
+                <value>C++</value>
+            </set>
+        </property>
+        <!--List类型对象属性注入-->
+        <property name="book">
+            <list>
+                <ref bean="book1"></ref>
+                <ref bean="book1"></ref>
+            </list>
+        </property>
+        <property name="map2" ref="map1"></property>
+    </bean>
+
+    <bean id="book1" class="com.spacex.www.spring.ioc.xml.Book">
+        <property name="name" value="《西游记》"></property>
+        <property name="author" value="吴承恩"></property>
+    </bean>
+    <bean id="book2" class="com.spacex.www.spring.ioc.xml.Book">
+        <property name="name" value="《西游记》"></property>
+        <property name="author" value="吴承恩"></property>
+    </bean>
+    <util:map id="map1">
+        <entry key="Java" value="java"></entry>
+        <entry key="C++" value="CPP"></entry>
+    </util:map>
+
+    <!--工厂bean-->
+    <bean id="student" class="com.spacex.www.spring.ioc.xml.Student"></bean>
+
+    <!--bean作用域-->
+    <bean id="teach" class="com.spacex.www.spring.ioc.xml.Teach" scope="prototype"></bean>
+    <!--bean生命周期-->
+    <bean id="city" class="com.spacex.www.spring.ioc.xml.City" init-method="initCity" destroy-method="destory">
+        <property name="name" value="上海"></property>
+    </bean>
+
+    <!--后置处理器-->
+    <bean id="beanPost" class="com.spacex.www.spring.ioc.xml.BeanPost"></bean>
+
+    <!--自动装配-->
+    <!--内部bean-->
+    <bean id="emp1" class="com.spacex.www.spring.ioc.xml.Emp" autowire="byName">
+        <property name="ename" value="lili"></property>
+        <property name="gender" value="19"></property>
+    </bean>
+    <bean id="dept" class="com.spacex.www.spring.ioc.xml.Dept">
+        <property name="dname" value="开发部"></property>
+    </bean>
+
+</beans>

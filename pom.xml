@@ -19,17 +19,25 @@
   </properties>
 
   <dependencies>
+    <!--junit测试依赖-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
-
+    <!--spring IOC依赖-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.2.9.RELEASE</version>
     </dependency>
+    <!--AOP依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>5.2.9.RELEASE</version>
+    </dependency>
+
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
@@ -87,6 +95,13 @@
           <!--<artifactId>commons-io</artifactId>-->
           <!--<version>2.4</version>-->
       <!--</dependency>-->
+
+    <!-- druid连接池的依赖 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.2.8</version>
+    </dependency>
 
   </dependencies>
 
