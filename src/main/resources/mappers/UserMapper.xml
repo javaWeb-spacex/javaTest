@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spacex.www.mybatis.mapper.UserMapper">
+    <!--int insertUser();-->
+    <insert id="insertUser">
+        insert into t_user
+        values (null, 'admin', '123456', 23, '男', '123@qq.com')
+
+    </insert>
+
+    <!--int updateUserInfo();-->
+    <update id="updateUserInfo">
+        update t_user
+        set username ='张三'
+        where id = 4
+    </update>
+
+    <!--int deleteUserInfoById();-->
+    <delete id="deleteUserInfoById">
+        delete
+        from t_user
+        where id = 6
+    </delete>
+
+
+    <!-- User queryUserInfoById();-->
+    <!--
+        查询功能标签必须设置resultType或resultMap
+        resultType :设置默认的映射关系
+        resultMap： 设置自定义的映射关系
+    -->
+    <select id="queryUserInfoById"  resultType="com.spacex.www.mybatis.entity.User">
+        select * from t_user where  id=4
+    </select>
+
+    <!--List<User> queryAllUserInfo();-->
+    <select id="queryAllUserInfo"  resultType="com.spacex.www.mybatis.entity.User">
+        select * from t_user
+    </select>
+
+</mapper>
