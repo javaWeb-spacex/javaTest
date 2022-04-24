@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spacex.www.mybatis.mapper.DeptMapper">
+
+    <resultMap id="deptResultMap" type="Dept">
+        <id property="did" column="did"></id>
+        <result property="deptName" column="dept_name"></result>
+    </resultMap>
+
+    <resultMap id="deptAndEmpResultMap" type="Dept">
+        <id property="did" column="did"></id>
+        <result property="deptName" column="dept_name"></result>
+        <!--
+            collection 处理一对多的映射关系
+            property： 处理一对多关系的属性
+            ofType： 表示该属性所对应的集合中存储数据的类型
+        -->
+        <collection property="emps" ofType="Emp">
+            <id property="eid" column="eid"></id>
+            <result property="empName" column="emp_name"></result>
+            <result property="age" column="age"></result>
+            <result property="sex" column="sex"></result>
+            <result property="email" column="email"></result>
+        </collection>
+    </resultMap>
+
+    <resultMap id="deptAndEmpByStepResultMap" type="Dept">
+        <id property="did" column="did"></id>
+        <result property="deptName" column="dept_name"></result>
+        <!--
+            collection 处理一对多的映射关系
+            select: 设置分布查询的sql的唯一标识（namespace.SQLId或者mapper接口的全限定类名.方法名）
+            column: 设置分布查询的条件
+            fetchType: 当开启了全局的延迟加载过后，可以通过该属性手动控制延迟加载的效果
+            fetchType="eager|lazy" eager：立即加载 lazy: 延迟加载
+        -->
+        <association property="emps"
+                     select="com.spacex.www.mybatis.mapper.EmpMapper.queryDeptAndEmpByStepTwo"
+                     column="did"
+                     fetchType="lazy">
+        </association>
+    </resultMap>
+
+    <!-- Dept queryEmpAndDeptByStepTwo(@Param("did")Integer did);-->
+    <select id="queryEmpAndDeptByStepTwo" resultMap="deptResultMap">
+        select * from t_dept where did=#{did}
+    </select>
+
+
+    <!-- Dept getDeptAndEmp(@Param("did")Integer did);-->
+    <select id="getDeptAndEmp" resultMap="deptAndEmpResultMap">
+        select * from t_dept d left join t_emp e on d.did=e.did where d.did=#{did}
+    </select>
+
+    <!-- Dept queryDeptAndEmpByStepOne(@Param("did")Integer did);-->
+    <select id="queryDeptAndEmpByStepOne" resultMap="deptAndEmpByStepResultMap">
+        select * from t_dept where did=#{did}
+    </select>
+
+
+</mapper>

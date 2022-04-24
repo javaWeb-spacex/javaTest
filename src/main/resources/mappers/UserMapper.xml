@@ -31,12 +31,69 @@
         resultType :设置默认的映射关系
         resultMap： 设置自定义的映射关系
     -->
-    <select id="queryUserInfoById"  resultType="com.spacex.www.mybatis.entity.User">
-        select * from t_user where  id=4
+    <select id="queryUserInfoById" resultType="com.spacex.www.mybatis.entity.User">
+        select *
+        from t_user
+        where id = 4
     </select>
 
     <!--List<User> queryAllUserInfo();-->
-    <select id="queryAllUserInfo"  resultType="com.spacex.www.mybatis.entity.User">
+    <select id="queryAllUserInfo" resultType="com.spacex.www.mybatis.entity.User">
+        select *
+        from t_user
+    </select>
+
+    <!--User queryUserInfoByUsername(String userName);-->
+    <select id="queryUserInfoByUsername" resultType="User">
+        <!--select * from t_user where username = #{userName}-->
+        select * from t_user where username ='${userName}'
+    </select>
+
+    <!--User checkLogin(String userName,String password);-->
+    <select id="checkLogin" resultType="User">
+        <!--select * from t_user where username = #{arg0} and password = #{arg1}-->
+        <!--select * from t_user where username = #{param1} and password = #{param2}-->
+        <!--select * from t_user where username = #{arg0} and password = #{param2}-->
+        select * from t_user where username ='${arg0}' and password = '${arg1}'
+    </select>
+
+    <!-- User checkLoginByMap(Map<String,Object> map);-->
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where username = #{userName} and password = #{password}
+        <!--select * from t_user where username ='${userName}' and password = '${password}'-->
+    </select>
+
+    <!--int insertUserInfo(User user);-->
+    <insert id="insertUserInfo">
+        insert  into t_user values(null,#{userName},#{password},#{age},#{sex},#{email})
+    </insert>
+
+    <!-- User checkLoginByParam(@Param("userName") String userName, @Param("password") String password);-->
+    <select id="checkLoginByParam" resultType="User">
+        select * from t_user where username = #{userName} and password = #{password}
+        <!--select * from t_user where username ='${userName}' and password = '${password}'-->
+    </select>
+
+    <!--int queryUserCount();-->
+    <select id="queryUserCount" resultType="java.lang.Integer">
+        select count(1) from t_user
+    </select>
+
+    <!--Map<String, Object> getUserInfoById(@Param("id") Integer id);-->
+    <select id="getUserInfoById" resultType="map">
+        select * from t_user where id=#{id}
+    </select>
+
+    <!--List<Map<String, Object>> queryAllUser();-->
+    <select id="queryAllUser" resultType="map">
+        select * from t_user
+    </select>
+
+    <!--
+        @MapKey("id")
+        Map<String, Object> queryAllUsers();
+    -->
+    <select id="queryAllUsers" resultType="map">
         select * from t_user
     </select>
 

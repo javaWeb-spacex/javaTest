@@ -3,8 +3,11 @@ package com.spacex.www.mybatis.mapper;
 
 
 import com.spacex.www.mybatis.entity.User;
+import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author :sbx
@@ -40,8 +43,59 @@ public interface UserMapper {
      * 查询所有用户信息
      */
     List<User> queryAllUserInfo();
+
     /**
      * 查询用户信息
      */
     User queryUserInfoById();
+
+    /**
+     * 根据用户名称查询用户信息
+     */
+    User queryUserInfoByUsername(String userName);
+
+    /**
+     * 验证登录
+     */
+    User checkLogin(String userName, String password);
+
+    /**
+     * 验证登录(参数为map)
+     */
+    User checkLoginByMap(Map<String, Object> map);
+
+    /**
+     * 添加用户信息
+     */
+    int insertUserInfo(User user);
+
+    /**
+     * 验证登录(使用@Param注解)
+     */
+    User checkLoginByParam(@Param("userName") String userName, @Param("password") String password);
+
+    /**
+     * 查询用户总人数
+     */
+    int queryUserCount();
+
+    /**
+     * 根据用户id查询用户信息
+     * @param id
+     * @return
+     */
+    Map<String, Object> getUserInfoById(@Param("id") Integer id);
+
+    /**
+     * 查询所有用户信息为map集合
+     */
+    List<Map<String, Object>> queryAllUser();
+
+    /**
+     * 查询所有用户信息为map集合
+     */
+    @MapKey("id")
+    Map<String, Object> queryAllUsers();
+
 }
+

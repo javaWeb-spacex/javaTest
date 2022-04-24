@@ -5,6 +5,17 @@
 <configuration>
     <!--连接信息-->
     <properties resource="mybatis/db.properties"/>
+
+    <settings>
+       <!-- &lt;!&ndash;将表中字段的下划线自动转换为驼峰&ndash;&gt;
+        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.spacex.www.mybatis.entity"/>
+    </typeAliases>
     <!--配置连接数据库的环境-->
     <environments default="development">
         <environment id="development">
@@ -28,6 +39,9 @@
     <!--引入映射文件-->
     <mappers>
         <mapper resource="mappers/UserMapper.xml"/>
+        <mapper resource="mappers/SqlMapper.xml"/>
+        <mapper resource="mappers/EmpMapper.xml"/>
+        <mapper resource="mappers/DeptMapper.xml"/>
     </mappers>
 </configuration>
 
