@@ -1,12 +1,14 @@
 package com.spacex.www.mybatis.entity;
 
+import java.io.Serializable;
+
 /**
  * @author :sbx
  * @date :2022/4/24 10:50
  * @description :
  * @version: :1.0.0
  */
-public class Emp {
+public class Emp implements Serializable {
     private Integer eid;
     private String empName;
     private Integer age;

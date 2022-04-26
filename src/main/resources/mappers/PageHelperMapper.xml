@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spacex.www.mybatis.mapper.PageHelperMapper">
+
+    <resultMap id="EmpMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+
+    <!--List<Emp> queryAllEmp();-->
+    <select id="queryAllEmp" resultMap="EmpMap">
+        select * from t_emp
+        <!--select eid,emp_name empName,age,sex,email from t_emp-->
+    </select>
+
+</mapper>

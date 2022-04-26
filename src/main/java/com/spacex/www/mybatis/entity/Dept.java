@@ -1,5 +1,6 @@
 package com.spacex.www.mybatis.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * @description :
  * @version: :1.0.0
  */
-public class Dept {
+public class Dept implements Serializable {
     private Integer did;
     private String deptName;
     private List<Emp> emps;

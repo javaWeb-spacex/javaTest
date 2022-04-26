@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--
+            targetRuntime: 执行生成的逆向工程的版本
+            MyBatis3Simple: 生成基本的CRUD（清新简洁版）
+            MyBatis3: 生成带条件的CRUD（奢华尊享版）
+    -->
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+
+        <!-- 抑制生成注释，由于生成的注释都是英文的，可以不让它生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库的连接信息 -->
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://106.14.253.27:3306/spacex?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="ABCabc123...">
+        </jdbcConnection>
+        <!-- javaBean的生成策略-->
+        <javaModelGenerator targetPackage="com.spacex.www.mybatis.mbg.bean"
+                            targetProject=".\src\main\java">
+            <!--是否能够使用子包-->
+            <property name="enableSubPackages" value="true"/>
+            <!--去掉字段名前后的空格，生成实体类中的属性-->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- SQL映射文件的生成策略 -->
+        <sqlMapGenerator targetPackage="com.spacex.www.mybatis.mbg.mapper"
+                         targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- Mapper接口的生成策略 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.spacex.www.mybatis.mbg.mapper" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 逆向分析的表 -->
+        <!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName -->
+        <!-- domainObjectName属性指定生成出来的实体类的类名 -->
+        <!--这里建议不生成qbc风格的接口-->
+        <table tableName="t_emp" domainObjectName="Emp"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <table tableName="t_dept" domainObjectName="Dept"/>
+    </context>
+</generatorConfiguration>
